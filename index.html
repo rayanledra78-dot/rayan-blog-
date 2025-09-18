@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مدونة rayan web</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#2c3e50; --accent:#3498db; --gold:#ffd700;
+      --bg:#f9f9f9; --card:#ffffff; --text:#111; --download-green:#28a745;
+    }
+    body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);transition:.3s;}
+    header{background:var(--primary);color:#fff;padding:20px;text-align:center;position:relative;}
+    header h1{margin-top:25px;font-family:'Cairo',sans-serif;font-size:28px;letter-spacing:1px;}
+    nav{margin-top:10px;}
+    nav a{margin:0 8px;color:#eee;text-decoration:none;font-weight:bold;cursor:pointer;}
+    nav a:hover{color:var(--gold)}
+    .search-box{position:absolute;left:15px;top:15px;}
+    .search-box input{padding:5px;border:none;border-radius:6px;}
+    #darkModeToggle{position:absolute;right:15px;top:15px;background:var(--accent);color:#fff;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;}
+    main{padding:18px;max-width:900px;margin:auto;}
+    article{margin-bottom:18px;padding:15px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+    article img{max-width:100%;border-radius:8px;}
+    .btn-download{display:inline-block;margin-top:8px;background:var(--download-green);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:bold;}
+    footer{background:var(--primary);color:#ccc;text-align:center;padding:14px;}
+    /* ألوان المقالات */
+    article.article-1{background:#f0f8ff;} 
+    article.article-2{background:#fff8dc;} 
+    article.article-3{background:#f5f5f5;} 
+    article.article-4{background:#e6e0f8;}
+    /* عناوين الأقسام */
+    .section-title{margin:25px 0 15px;padding:10px;background:var(--accent);color:#fff;border-radius:8px;font-size:20px;font-weight:bold;}
+    /* أزرار المشاركة */
+    .share-buttons{margin-top:10px;}
+    .share-buttons a{display:inline-block;margin:4px;padding:6px 12px;border-radius:6px;text-decoration:none;color:#fff;font-size:14px;font-weight:bold;}
+    .share-tiktok{background:#000;}
+    .share-insta{background:#e1306c;}
+    .share-messenger{background:#0084ff;}
+    .share-fb{background:#3b5998;}
+    /* الوضع المظلم */
+    .dark-mode{--primary:#111;--bg:#121217;--card:#1d1f22;--text:#eee;}
+    .dark-mode header,.dark-mode footer{background:var(--primary);}
+    .section{display:none;}
+    .active{display:block;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="search-box"><input id="searchInput" type="text" placeholder="ابحث..."></div>
+    <button id="darkModeToggle">🌙</button>
+    <h1> rayan ☣️ web</h1>
+    <nav>
+      <a data-section="home">الرئيسية</a>
+      <a data-section="articles">مقالات</a>
+      <a data-section="apps">تطبيقات</a>
+      <a data-section="games">ألعاب</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- الرئيسية -->
+    <section id="home" class="section active">
+      <article class="article-2">
+        <h2>aim tool 8 ball pool</h2>
+        <img src="https://i.postimg.cc/286mMnfH/images.jpg" alt="8 ball pool">
+        <p>aim tool خاص بهواتف الأندرويد مجاني بالكامل بدون بان.</p>
+        <a class="btn-download" href="https://www.mediafire.com/folder/cke16k9qavvkq/8+ball+poll+aim+%F0%9F%92%AF%E2%9C%85" target="_blank">⬇️ تحميل</a>
+      </article>
+
+      <div class="section-title">📰 مقالات</div>
+      <article class="article-4">
+        <h2>📸 أفضل 3 تطبيقات لتعديل الصور</h2>
+        <div>
+          <h3>1- Snapseed</h3>
+          <img src="https://i.postimg.cc/ZKc6bpT1/snapseed.jpg" alt="Snapseed">
+          <p>تطبيق احترافي من Google لتعديل الصور.</p>
+          <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.niksoftware.snapseed" target="_blank">⬇️ تحميل</a>
+        </div>
+        <div>
+          <h3>2- PicsArt</h3>
+          <img src="https://i.postimg.cc/tTSqWJ6R/picsart.jpg" alt="PicsArt">
+          <p>تطبيق شامل لإضافة التأثيرات والفلاتر.</p>
+          <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.picsart.studio" target="_blank">⬇️ تحميل</a>
+        </div>
+        <div>
+          <h3>3- Lightroom</h3>
+          <img src="https://i.postimg.cc/nLgYnyvM/lightroom.jpg" alt="Lightroom">
+          <p>أفضل تطبيق لمعالجة الصور من Adobe.</p>
+          <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.adobe.lrmobile" target="_blank">⬇️ تحميل</a>
+        </div>
+        <div class="share-buttons">
+          <a class="share-tiktok" href="https://www.tiktok.com/share" target="_blank">TikTok</a>
+          <a class="share-insta" href="https://www.instagram.com/" target="_blank">Instagram</a>
+          <a class="share-messenger" href="https://www.messenger.com/" target="_blank">Messenger</a>
+          <a class="share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://your-blog-link.com" target="_blank">Facebook</a>
+        </div>
+      </article>
+
+      <div class="section-title">🎮 أفضل الألعاب</div>
+      <article class="article-1">
+        <h2>🎮 أفضل 5 ألعاب أندرويد</h2>
+        <ul>
+          <li>
+            PUBG Mobile 
+            <br>
+            <img src="https://i.postimg.cc/0QcVgBJy/88cec482ec921a5790bd9952d5a12ab3.jpg" alt="PUBG Mobile" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank">تحميل</a>
+          </li>
+          <li>
+            Call of Duty Mobile 
+            <br>
+            <img src="https://i.postimg.cc/05z4R9cg/51b132afab3cc6a4bcc2caee3e8ac027.jpg" alt="Call of Duty Mobile" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter" target="_blank">تحميل</a>
+          </li>
+          <li>
+            Free Fire 
+            <br>
+            <img src="https://i.postimg.cc/85pVBxSp/1c018e1cf15765649aea5640c7e78104.jpg" alt="Free Fire" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.dts.freefireth" target="_blank">تحميل</a>
+          </li>
+          <li>
+            Asphalt 9 
+            <br>
+            <img src="https://i.postimg.cc/J4DCqb9k/4c59fa61f22da4a7743f26860e7be20c.jpg" alt="Asphalt 9" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftA9HM" target="_blank">تحميل</a>
+          </li>
+          <li>
+            Genshin Impact 
+            <br>
+            <img src="https://i.postimg.cc/T1KFt6H6/de74b07b5e4be2193982320131787249.jpg" alt="Genshin Impact" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact" target="_blank">تحميل</a>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- مقالات -->
+    <section id="articles" class="section"></section>
+
+    <!-- تطبيقات -->
+    <section id="apps" class="section">
+      <article class="article-2">
+        <h2>aim tool 8 ball pool</h2>
+        <img src="https://i.postimg.cc/286mMnfH/images.jpg" alt="8 ball pool">
+        <p>aim tool خاص بهواتف الأندرويد مجاني بالكامل بدون بان.</p>
+        <a class="btn-download" href="https://www.mediafire.com/folder/cke16k9qavvkq/8+ball+poll+aim+%F0%9F%92%AF%E2%9C%85" target="_blank">⬇️ تحميل</a>
+      </article>
+    </section>
+
+    <!-- ألعاب -->
+    <section id="games" class="section">
+      <article class="article-1">
+        <h2>🎮 أفضل 5 ألعاب أندرويد</h2>
+        <ul>
+          <li>
+            PUBG Mobile 
+            <br>
+            <img src="https://i.postimg.cc/0QcVgBJy/88cec482ec921a5790bd9952d5a12ab3.jpg" alt="PUBG Mobile" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank">تحميل</a>
+          </li>
+          <li>
+            Call of Duty Mobile 
+            <br>
+            <img src="https://i.postimg.cc/05z4R9cg/51b132afab3cc6a4bcc2caee3e8ac027.jpg" alt="Call of Duty Mobile" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter" target="_blank">تحميل</a>
+          </li>
+          <li>
+            Free Fire 
+            <br>
+            <img src="https://i.postimg.cc/85pVBxSp/1c018e1cf15765649aea5640c7e78104.jpg" alt="Free Fire" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.dts.freefireth" target="_blank">تحميل</a>
+          </li>
+          <li>
+            Asphalt 9 
+            <br>
+            <img src="https://i.postimg.cc/J4DCqb9k/4c59fa61f22da4a7743f26860e7be20c.jpg" alt="Asphalt 9" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftA9HM" target="_blank">تحميل</a>
+          </li>
+          <li>
+            Genshin Impact 
+            <br>
+            <img src="https://i.postimg.cc/T1KFt6H6/de74b07b5e4be2193982320131787249.jpg" alt="Genshin Impact" style="max-width:120px; border-radius:8px; margin:6px 0;">
+            <br>
+            <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact" target="_blank">تحميل</a>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer><p>© 2025 مدونة rayan web</p></footer>
+
+  <script type='text/javascript' src='//pl27667304.revenuecpmgate.com/bb/16/1a/bb161ad617fb826b7bfd202b0fda3b89.js'></script>
+
+  <script>
+    const toggle=document.getElementById("darkModeToggle");
+    toggle.addEventListener("click",()=>{document.body.classList.toggle("dark-mode");toggle.textContent=document.body.classList.contains("dark-mode")?"☀️":"🌙";});
+    const links=document.querySelectorAll("nav a");
+    const sections=document.querySelectorAll(".section");
+    links.forEach(link=>{
+      link.addEventListener("click",()=>{
+        sections.forEach(s=>s.classList.remove("active"));
+        document.getElementById(link.dataset.section).classList.add("active");
+      });
+    });
+    const search=document.getElementById("searchInput");
+    search.addEventListener("input",()=>{
+      const q=search.value.toLowerCase();
+      sections.forEach(sec=>{
+        sec.querySelectorAll("article").forEach(a=>{
+          a.style.display=a.innerText.toLowerCase().includes(q)?"block":"none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
