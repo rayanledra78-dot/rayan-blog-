@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مدونة rayan web</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#2c3e50; --accent:#3498db; --gold:#ffd700;
+      --bg:#f9f9f9; --card:#ffffff; --text:#111; --download-green:#28a745;
+    }
+    body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);transition:.3s;}
+    header{background:var(--primary);color:#fff;padding:20px;text-align:center;position:relative;}
+    header h1{margin-top:25px;font-family:'Cairo',sans-serif;font-size:28px;letter-spacing:1px;}
+    nav{margin-top:10px;}
+    nav a{margin:0 8px;color:#eee;text-decoration:none;font-weight:bold;cursor:pointer;}
+    nav a:hover{color:var(--gold)}
+    .search-box{position:absolute;left:15px;top:15px;}
+    .search-box input{padding:5px;border:none;border-radius:6px;}
+    #darkModeToggle{position:absolute;right:15px;top:15px;background:var(--accent);color:#fff;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;}
+    main{padding:18px;max-width:900px;margin:auto;}
+    article{margin-bottom:18px;padding:15px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+    article img{max-width:100%;border-radius:8px;}
+    .btn-download{display:inline-block;margin-top:8px;background:var(--download-green);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:bold;}
+    .btn-readmore{display:inline-block;margin-top:8px;background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:bold;}
+    footer{background:var(--primary);color:#ccc;text-align:center;padding:14px;}
+    /* ألوان المقالات */
+    article.article-1{background:#f0f8ff;} 
+    article.article-2{background:#fff8dc;} 
+    article.article-3{background:#f5f5f5;} 
+    article.article-4{background:#e6e0f8;}
+    article.article-pray{background:#222;color:yellow;}
+    /* عناوين الأقسام */
+    .section-title{margin:25px 0 15px;padding:10px;background:var(--accent);color:#fff;border-radius:8px;font-size:20px;font-weight:bold;}
+    /* الوضع المظلم */
+    .dark-mode{--primary:#111;--bg:#121217;--card:#1d1f22;--text:#eee;}
+    .dark-mode header,.dark-mode footer{background:var(--primary);}
+    .section{display:none;}
+    .active{display:block;}
+    /* محتوى المقال الكامل */
+    .full-article{display:none;margin-top:12px;background:#fff;border-radius:8px;padding:15px;line-height:1.8;color:var(--text);}
+    .full-article h3{color:#fff;background:var(--primary);padding:8px;border-radius:6px;text-align:center;}
+    /* صور الألعاب */
+    .game-thumb{max-width:120px;border-radius:8px;margin:6px 0;display:block;}
+    @media (max-width:480px){
+      header h1{font-size:22px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="search-box"><input id="searchInput" type="text" placeholder="ابحث..."></div>
+    <button id="darkModeToggle">🌙</button>
+    <h1> rayan ☣️ web</h1>
+    <nav>
+      <a data-section="home">الرئيسية</a>
+      <a data-section="articles">مقالات</a>
+      <a data-section="apps">تطبيقات</a>
+      <a data-section="games">ألعاب</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- الرئيسية -->
+    <section id="home" class="section active">
+      <div class="section-title">📱 أفضل التطبيقات</div>
+      <article class="article-1">
+        <h2>📱 أفضل 5 تطبيقات مجانية</h2>
+        <ul>
+          <li>تطبيق 1 <a class="btn-download" href="#">تحميل</a></li>
+          <li>تطبيق 2 <a class="btn-download" href="#">تحميل</a></li>
+          <li>تطبيق 3 <a class="btn-download" href="#">تحميل</a></li>
+          <li>تطبيق 4 <a class="btn-download" href="#">تحميل</a></li>
+          <li>تطبيق 5 <a class="btn-download" href="#">تحميل</a></li>
+        </ul>
+      </article>
+
+      <article class="article-2">
+        <h2>aim tool 8 ball pool</h2>
+        <img src="https://i.postimg.cc/286mMnfH/images.jpg" alt="8 ball pool">
+        <p>aim tool خاص بهواتف الأندرويد مجاني بالكامل بدون بان.</p>
+        <a class="btn-download" href="https://www.mediafire.com/folder/cke16k9qavvkq/8+ball+poll+aim+%F0%9F%92%AF%E2%9C%85" target="_blank">⬇️ تحميل</a>
+      </article>
+
+      <div class="section-title">📰 مقالات</div>
+
+      <!-- مقالة الصلاة -->
+      <article class="article-4">
+        <h2>🕌 كيف أحب الصلاة وأشعر بالذنب عند تأخيرها؟</h2>
+        <img src="https://i.postimg.cc/rFWvFpJr/images-1.jpg" alt="كيف أحب صلاتي">
+        <p>لقد مررت لفترة بالشك في الصلاة والوضوء، لكني تخلصت والحمد لله من هذا الشيء...</p>
+        <button class="btn-readmore" onclick="toggleArticle()">📖 قراءة المزيد</button>
+        <div id="fullArticle" class="full-article">
+          <h3>🕌 كيف أحب الصلاة وأشعر بالذنب عند تأخيرها؟</h3>
+          <p>لقد مررت لفترة بالشك في الصلاة والوضوء، لكني تخلصت والحمد لله من هذا الشيء. لقد كنت قبل وسوستي محبة للصلاة، ولا أؤخرها أبدا. ولكني الآن أؤخرها دائما، ولا أشعر بالذنب مثل ما كنت من قبل.</p>
+          <p>فالصلاة هي الركن الثاني من أركان الإسلام الخمسة، وهي عماد الدين، من حفظها؛ حفظ الدين. ومن ضيعها؛ فهو لما سواها أضيع.</p>
+          <p>نصيحتنا لك أن تسعي في التخلص من عادة تأخير الصلاة، وتستعيني بالله وتسأليه الإعانة، وتستعيذي به من الكسل والعجز.</p>
+          <p>وأن تجاهدي نفسك على أدائها في وقتها بطمأنينة وخشوع؛ لتكوني من الذين قال الله فيهم: 
+          <b>{ قد أفلح المؤمنون * الذين هم في صلاتهم خاشعون }</b>.</p>
+          <p>وقد يعتري المرء فتور عن الطاعات... لكن الفرائض لا بد من المحافظة عليها في كل حال.</p>
+          <p><b>والله أعلم.</b></p>
+        </div>
+      </article>
+
+      <!-- مقالة سكريبت ملابس -->
+      <article class="article-4">
+        <h2 style="font-weight:bold; color:#000;">سكريبت ملابس</h2>
+        <img src="https://i.postimg.cc/ZKS8myNy/maxresdefault.jpg" alt="سكريبت ملابس" style="max-width:100%;border-radius:8px;margin:8px 0;">
+        <p style="color:purple;font-size:16px;line-height:1.7;">
+          نقدم لكم سكريبت ملابس جاهز للتثبيت (APK). يمكنكم تحميل الملف من الرابط الآمن أدناه وتجربته على جهاز الأندرويد.
+        </p>
+        <a class="btn-download" href="https://www.mediafire.com/file/w71njni8vdijsim/%25D8%25B3%25D9%2583%25D8%25B1%25D9%258A%25D8%25A8%25D8%25AAScript_%25E2%259C%2585%25F0%259F%2592%25AF.apk/file" target="_blank">⬇️ تحميل السكريبت</a>
+      </article>
+
+      <div class="section-title">🎮 أفضل الألعاب</div>
+      <article class="article-1">
+        <h2>🎮 أفضل 5 ألعاب أندرويد</h2>
+        <ul>
+          <li>PUBG Mobile <br><img class="game-thumb" src="https://i.postimg.cc/0QcVgBJy/88cec482ec921a5790bd9952d5a12ab3.jpg" alt="PUBG Mobile"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank">تحميل</a></li>
+          <li>Call of Duty Mobile <br><img class="game-thumb" src="https://i.postimg.cc/05z4R9cg/51b132afab3cc6a4bcc2caee3e8ac027.jpg" alt="Call of Duty Mobile"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter" target="_blank">تحميل</a></li>
+          <li>Free Fire <br><img class="game-thumb" src="https://i.postimg.cc/85pVBxSp/1c018e1cf15765649aea5640c7e78104.jpg" alt="Free Fire"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.dts.freefireth" target="_blank">تحميل</a></li>
+          <li>Asphalt 9 <br><img class="game-thumb" src="https://i.postimg.cc/J4DCqb9k/4c59fa61f22da4a7743f26860e7be20c.jpg" alt="Asphalt 9"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftA9HM" target="_blank">تحميل</a></li>
+          <li>Genshin Impact <br><img class="game-thumb" src="https://i.postimg.cc/T1KFt6H6/de74b07b5e4be2193982320131787249.jpg" alt="Genshin Impact"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact" target="_blank">تحميل</a></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer><p>© 2025 مدونة rayan web</p></footer>
+
+  <script>
+    // تبديل الوضع المظلم
+    const toggle=document.getElementById("darkModeToggle");
+    toggle.addEventListener("click",()=>{document.body.classList.toggle("dark-mode");toggle.textContent=document.body.classList.contains("dark-mode")?"☀️":"🌙";});
+    // التنقل بين الأقسام
+    const links=document.querySelectorAll("nav a");
+    const sections=document.querySelectorAll(".section");
+    links.forEach(link=>{
+      link.addEventListener("click",()=>{
+        sections.forEach(s=>s.classList.remove("active"));
+        document.getElementById(link.dataset.section).classList.add("active");
+      });
+    });
+    // البحث
+    const search=document.getElementById("searchInput");
+    search.addEventListener("input",()=>{
+      const q=search.value.toLowerCase();
+      sections.forEach(sec=>{
+        sec.querySelectorAll("article").forEach(a=>{
+          a.style.display=a.innerText.toLowerCase().includes(q)?"block":"none";
+        });
+      });
+    });
+    // قراءة المزيد
+    function toggleArticle(){
+      const x = document.getElementById("fullArticle");
+      const show = (x.style.display !== "block");
+      x.style.display = show ? "block" : "none";
+      if(show) x.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  </script>
+</body>
+</html>
