@@ -1,222 +1,251 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>مدونة rayan web</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --primary:#2c3e50; --accent:#3498db; --gold:#ffd700;
-      --bg:#f9f9f9; --card:#ffffff; --text:#111; --download-green:#28a745;
-    }
-    body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);transition:.3s;}
-    header{background:var(--primary);color:#fff;padding:20px;text-align:center;position:relative;}
-    header h1{margin-top:25px;font-family:'Cairo',sans-serif;font-size:28px;letter-spacing:1px;}
-    nav{margin-top:10px;}
-    nav a{margin:0 8px;color:#eee;text-decoration:none;font-weight:bold;cursor:pointer;}
-    nav a:hover{color:var(--gold)}
-    .search-box{position:absolute;left:15px;top:15px;}
-    .search-box input{padding:5px;border:none;border-radius:6px;}
-    #darkModeToggle{position:absolute;right:55px;top:15px;background:var(--accent);color:#fff;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;}
-    /* زر القائمة */
-    .menu-btn{position:absolute;right:15px;top:15px;background:var(--accent);color:#fff;border:none;border-radius:50%;width:36px;height:36px;font-size:20px;cursor:pointer;}
-    .menu-content{display:none;position:absolute;top:55px;right:15px;background:#fff;color:#000;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.2);min-width:140px;z-index:10;}
-    .menu-content a{display:block;padding:10px;color:#000;text-decoration:none;font-weight:bold;}
-    .menu-content a:hover{background:var(--accent);color:#fff;}
-    main{padding:18px;max-width:900px;margin:auto;}
-    article{margin-bottom:18px;padding:15px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
-    article img{max-width:100%;border-radius:8px;}
-    .btn-download{display:inline-block;margin-top:8px;background:var(--download-green);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:bold;}
-    .btn-readmore{display:inline-block;margin-top:8px;background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:bold;}
-    footer{background:var(--primary);color:#ccc;text-align:center;padding:14px;}
-    /* ألوان المقالات */
-    article.article-1{background:#f0f8ff;} 
-    article.article-2{background:#fff8dc;} 
-    article.article-3{background:#f5f5f5;} 
-    article.article-4{background:#e6e0f8;}
-    article.article-pray{background:#222;color:yellow;}
-    /* عناوين الأقسام */
-    .section-title{margin:25px 0 15px;padding:10px;background:var(--accent);color:#fff;border-radius:8px;font-size:20px;font-weight:bold;}
-    /* الوضع المظلم */
-    .dark-mode{--primary:#111;--bg:#121217;--card:#1d1f22;--text:#eee;}
-    .dark-mode header,.dark-mode footer{background:var(--primary);}
-    .section{display:none;}
-    .active{display:block;}
-    /* محتوى المقال الكامل */
-    .full-article{display:none;margin-top:12px;background:#fff;border-radius:8px;padding:15px;line-height:1.8;color:var(--text);}
-    .full-article h3{color:#fff;background:var(--primary);padding:8px;border-radius:6px;text-align:center;}
-    /* صور الألعاب */
-    .game-thumb{max-width:120px;border-radius:8px;margin:6px 0;display:block;}
-    @media (max-width:480px){
-      header h1{font-size:22px;}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spin & Win 💎</title>
+<style>
+:root{--bg1:#1e3c72;--bg2:#2a5298}
+html, body{margin:0;padding:0;overflow:hidden;height:100%;width:100%;}
+body{font-family:"Cairo",sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;}
+h1{margin:10px 0 6px 0;font-size:26px}
+.wheel-wrap{position:relative;width:340px;height:340px;margin:12px}
+canvas#wheel{width:100%;height:100%;border-radius:50%;box-shadow:0 8px 30px rgba(0,0,0,0.4)}
+.pointer{position:absolute;top:-18px;left:50%;transform:translateX(-50%) rotate(180deg);width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-top:28px solid #ffd54f;filter:drop-shadow(0 3px 4px rgba(0,0,0,0.3));}
+#spinBtn,#claimBtn,#withdrawBtnGame{margin-top:14px;padding:12px 30px;border-radius:10px;border:none;font-weight:700;font-size:18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.2);}
+#spinBtn{background:#ffcc00;color:#222;}
+#claimBtn{background:#ffcc00;color:#222;}
+#withdrawBtnGame{background:#4caf50;color:#fff;}
+#withdrawBtnGame{position: fixed;top:16px;left:16px;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;padding:0;box-shadow:0 6px 18px rgba(0,0,0,0.3);z-index:1000;}
+#spinBtn:active,#claimBtn:active,#withdrawBtnGame:active{transform:translateY(1px)}
+#claimBtn.hidden{display:none}
+.popup{position:fixed;inset:0;background:rgba(0,0,0,0.72);display:flex;align-items:center;justify-content:center;padding:20px;z-index:2000;visibility:hidden;opacity:0;transition:opacity .18s;}
+.popup.show{visibility:visible;opacity:1}
+.popup-box{background:#232323;padding:18px;border-radius:12px;min-width:260px;color:#fff;text-align:center}
+.popup-box h2{margin:0 0 8px 0}
+.popup-box p{margin:0 0 10px 0;color:#ddd}
+.popup-box button{margin-top:8px;padding:10px 16px;border-radius:8px;border:none;background:#ffd54f;color:#222;font-weight:700;cursor:pointer}
+.points-badge{position:fixed;right:16px;top:16px;background:rgba(0,0,0,0.35);padding:8px 12px;border-radius:999px;font-weight:700;}
+.confetti{position:fixed;pointer-events:none;z-index:1500}
+</style>
 </head>
 <body>
-  <header>
-    <div class="search-box"><input id="searchInput" type="text" placeholder="ابحث..."></div>
-    <button id="darkModeToggle">🌙</button>
-    <button class="menu-btn">⋮</button>
-    <div class="menu-content" id="menuContent">
-      <a href="#" id="langToggle">🌍 تغيير اللغة</a>
-      <a href="https://www.instagram.com/r___ldr?igsh=OHcxcmM3ZGV1N21p" target="_blank">💙 الدعم</a>
+<h1>🎡 Spin & Win</h1>
+<div class="wheel-wrap">
+  <div class="pointer" aria-hidden="true"></div>
+  <canvas id="wheel" width="340" height="340" role="img" aria-label="Wheel"></canvas>
+</div>
+
+<button id="spinBtn">Spin and Win</button>
+<button id="claimBtn" class="hidden">احصد نقاطك 🎬</button>
+<button id="withdrawBtnGame">💰</button>
+
+<div class="points-badge" id="pointsBadge">نقاطك: 0</div>
+
+<!-- Popups -->
+<div id="errorPopup" class="popup">
+  <div class="popup-box">
+    <h2>❌ خطأ</h2>
+    <p>لم تشاهد الإعلان</p>
+    <div style="display:flex;gap:8px;justify-content:center">
+      <button id="retryAdBtn">مشاهدة الإعلان</button>
+      <button id="closeErrBtn" style="background:#ff6b6b;color:white">إلغاء</button>
     </div>
-    <h1 id="title"> rayan ☣️ web</h1>
-    <nav>
-      <a data-section="home" id="nav-home">الرئيسية</a>
-      <a data-section="articles" id="nav-articles">مقالات</a>
-      <a data-section="apps" id="nav-apps">تطبيقات</a>
-      <a data-section="games" id="nav-games">ألعاب</a>
-    </nav>
-  </header>
+  </div>
+</div>
 
-  <main>
-    <!-- الرئيسية -->
-    <section id="home" class="section active">
-      <div class="section-title" id="apps-title">📱 أفضل التطبيقات</div>
-      <article class="article-1">
-        <h2 id="top-apps">📱 أفضل 5 تطبيقات مجانية</h2>
-        <ul>
-          <li>تطبيق 1 <a class="btn-download" href="#">تحميل</a></li>
-          <li>تطبيق 2 <a class="btn-download" href="#">تحميل</a></li>
-          <li>تطبيق 3 <a class="btn-download" href="#">تحميل</a></li>
-          <li>تطبيق 4 <a class="btn-download" href="#">تحميل</a></li>
-          <li>تطبيق 5 <a class="btn-download" href="#">تحميل</a></li>
-        </ul>
-      </article>
+<div id="withdrawPopup" class="popup">
+  <div class="popup-box">
+    <h2>شروط السحب</h2>
+    <p>1. 10000💎 🔄 1USD<br>
+       2. لقطة شاشة للموقع<br>
+       3. امتلاك حساب PayPal (ليس إجباري)<br>
+       4. متوفر Flexy لكل الشرائح الجزائرية</p>
+    <button id="confirmWithdrawBtn">سحب 🔄</button>
+  </div>
+</div>
 
-      <article class="article-2">
-        <h2>aim tool 8 ball pool</h2>
-        <img src="https://i.postimg.cc/286mMnfH/images.jpg" alt="8 ball pool">
-        <p>aim tool خاص بهواتف الأندرويد مجاني بالكامل بدون بان.</p>
-        <a class="btn-download" href="https://www.mediafire.com/folder/cke16k9qavvkq/8+ball+poll+aim+%F0%9F%92%AF%E2%9C%85" target="_blank">⬇️ تحميل</a>
-      </article>
+<div id="toast" class="popup">
+  <div class="popup-box" id="toastBox" style="min-width:200px"></div>
+</div>
 
-      <div class="section-title" id="articles-title">📰 مقالات</div>
+<script>
+const BLOG_LINK = "https://rayanwebsite.blogspot.com/2025/10/body-background-linear-gradient135deg.html";
+const MIN_WATCH_MS = 20000;
+const BIG_REWARD = 100;
+const SMALL_REWARD = 10;
 
-      <!-- مقالة الصلاة -->
-      <article class="article-4">
-        <h2 id="pray-article">🕌 كيف أحب الصلاة وأشعر بالذنب عند تأخيرها؟</h2>
-        <img src="https://i.postimg.cc/rFWvFpJr/images-1.jpg" alt="كيف أحب صلاتي">
-        <p>لقد مررت لفترة بالشك في الصلاة والوضوء، لكني تخلصت والحمد لله من هذا الشيء...</p>
-        <button class="btn-readmore" onclick="toggleArticle()" id="readmore-btn">📖 قراءة المزيد</button>
-        <div id="fullArticle" class="full-article">
-          <h3>🕌 كيف أحب الصلاة وأشعر بالذنب عند تأخيرها؟</h3>
-          <p>لقد مررت لفترة بالشك في الصلاة والوضوء، لكني تخلصت والحمد لله من هذا الشيء. لقد كنت قبل وسوستي محبة للصلاة، ولا أؤخرها أبدا. ولكني الآن أؤخرها دائما، ولا أشعر بالذنب مثل ما كنت من قبل.</p>
-          <p>فالصلاة هي الركن الثاني من أركان الإسلام الخمسة، وهي عماد الدين، من حفظها؛ حفظ الدين. ومن ضيعها؛ فهو لما سواها أضيع.</p>
-          <p>نصيحتنا لك أن تسعي في التخلص من عادة تأخير الصلاة، وتستعيني بالله وتسأليه الإعانة، وتستعيذي به من الكسل والعجز.</p>
-          <p>وأن تجاهدي نفسك على أدائها في وقتها بطمأنينة وخشوع؛ لتكوني من الذين قال الله فيهم: 
-          <b>{ قد أفلح المؤمنون * الذين هم في صلاتهم خاشعون }</b>.</p>
-          <p>وقد يعتري المرء فتور عن الطاعات... لكن الفرائض لا بد من المحافظة عليها في كل حال.</p>
-          <p><b>والله أعلم.</b></p>
-        </div>
-      </article>
+// Canvas wheel setup
+const canvas = document.getElementById('wheel');
+const ctx = canvas.getContext('2d');
+const spinBtn = document.getElementById('spinBtn');
+const claimBtn = document.getElementById('claimBtn');
+const pointsBadge = document.getElementById('pointsBadge');
+const errorPopup = document.getElementById('errorPopup');
+const retryAdBtn = document.getElementById('retryAdBtn');
+const closeErrBtn = document.getElementById('closeErrBtn');
+const toast = document.getElementById('toast');
+const toastBox = document.getElementById('toastBox');
+const withdrawBtnGame = document.getElementById('withdrawBtnGame');
+const withdrawPopup = document.getElementById('withdrawPopup');
+const confirmWithdrawBtn = document.getElementById('confirmWithdrawBtn');
 
-      <!-- مقالة سكريبت ملابس -->
-      <article class="article-4">
-        <h2 style="font-weight:bold; color:#000;">سكريبت ملابس</h2>
-        <img src="https://i.postimg.cc/ZKS8myNy/maxresdefault.jpg" alt="سكريبت ملابس" style="max-width:100%;border-radius:8px;margin:8px 0;">
-        <p style="color:purple;font-size:16px;line-height:1.7;">
-          نقدم لكم سكريبت ملابس جاهز للتثبيت (APK). يمكنكم تحميل الملف من الرابط الآمن أدناه وتجربته على جهاز الأندرويد.
-        </p>
-        <a class="btn-download" href="https://www.mediafire.com/file/w71njni8vdijsim/%25D8%25B3%25D9%2583%25D8%25B1%25D9%258A%25D8%25A8%25D8%25AAScript_%25E2%259C%2585%25F0%259F%2592%25AF.apk/file" target="_blank">⬇️ تحميل السكريبت</a>
-      </article>
+let points = Number(localStorage.getItem('app_points') || 0);
+function updatePointsUI(){ pointsBadge.textContent = "نقاطك: "+points; localStorage.setItem('app_points', points); }
+updatePointsUI();
 
-      <div class="section-title" id="games-title">🎮 أفضل الألعاب</div>
-      <article class="article-1">
-        <h2 id="top-games">🎮 أفضل 5 ألعاب أندرويد</h2>
-        <ul>
-          <li>PUBG Mobile <br><img class="game-thumb" src="https://i.postimg.cc/0QcVgBJy/88cec482ec921a5790bd9952d5a12ab3.jpg" alt="PUBG Mobile"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank">تحميل</a></li>
-          <li>Call of Duty Mobile <br><img class="game-thumb" src="https://i.postimg.cc/05z4R9cg/51b132afab3cc6a4bcc2caee3e8ac027.jpg" alt="Call of Duty Mobile"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter" target="_blank">تحميل</a></li>
-          <li>Free Fire <br><img class="game-thumb" src="https://i.postimg.cc/85pVBxSp/1c018e1cf15765649aea5640c7e78104.jpg" alt="Free Fire"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.dts.freefireth" target="_blank">تحميل</a></li>
-          <li>Asphalt 9 <br><img class="game-thumb" src="https://i.postimg.cc/J4DCqb9k/4c59fa61f22da4a7743f26860e7be20c.jpg" alt="Asphalt 9"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftA9HM" target="_blank">تحميل</a></li>
-          <li>Genshin Impact <br><img class="game-thumb" src="https://i.postimg.cc/T1KFt6H6/de74b07b5e4be2193982320131787249.jpg" alt="Genshin Impact"><br><a class="btn-download" href="https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact" target="_blank">تحميل</a></li>
-        </ul>
-      </article>
-    </section>
-  </main>
+// Wheel setup
+const slices = 20;
+const bigIndices = [3,7,15,19];
+const smallIndices = Array.from({length:20},(_,i)=>i).filter(i=>!bigIndices.includes(i));
+const colors = ["#ff8a65","#ffd54f","#ff8a65","#ffd54f","#ff8a65","#ffd54f","#ff8a65","#ffd54f","#ff8a65","#ffd54f","#ff8a65","#ffd54f","#ff8a65","#ffd54f","#ff8a65","#ffd54f","#ff8a65","#ffd54f","#ff8a65","#ffd54f"];
+const labels = Array(slices).fill("").map((_,i)=> bigIndices.includes(i) ? "100 💎" : "10 💎");
 
-  <footer><p>© 2025 مدونة rayan web</p></footer>
+function drawWheel(){
+  const centerX = canvas.width/2, centerY = canvas.height/2, radius = Math.min(centerX,centerY);
+  const arc = (2*Math.PI)/slices;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let i=0;i<slices;i++){
+    ctx.beginPath();
+    ctx.moveTo(centerX,centerY);
+    ctx.fillStyle = colors[i % colors.length];
+    ctx.arc(centerX,centerY,radius,i*arc,(i+1)*arc);
+    ctx.lineTo(centerX,centerY);
+    ctx.fill();
+    ctx.save();
+    ctx.translate(centerX,centerY);
+    ctx.rotate(i*arc + arc/2);
+    ctx.textAlign = "right";
+    ctx.fillStyle="#111";
+    ctx.font="bold 18px sans-serif";
+    ctx.fillText(labels[i],radius-18,8);
+    ctx.restore();
+  }
+}
+drawWheel();
 
-  <script>
-    // تبديل الوضع المظلم
-    const toggle=document.getElementById("darkModeToggle");
-    toggle.addEventListener("click",()=>{document.body.classList.toggle("dark-mode");toggle.textContent=document.body.classList.contains("dark-mode")?"☀️":"🌙";});
-    
-    // القائمة
-    const menuBtn=document.querySelector(".menu-btn");
-    const menuContent=document.getElementById("menuContent");
-    menuBtn.addEventListener("click",()=>{menuContent.style.display=menuContent.style.display==="block"?"none":"block";});
-    document.addEventListener("click",(e)=>{if(!menuBtn.contains(e.target)&&!menuContent.contains(e.target)){menuContent.style.display="none";}});
+// Wheel spinning
+let isSpinning=false;
+const wheelElem=canvas;
+function pickIndexByProbability(){
+  return Math.random()<0.01 ? bigIndices[Math.floor(Math.random()*bigIndices.length)] : smallIndices[Math.floor(Math.random()*smallIndices.length)];
+}
+function degToCss(deg){ return `rotate(${deg}deg)`; }
 
-    // التنقل بين الأقسام
-    const links=document.querySelectorAll("nav a");
-    const sections=document.querySelectorAll(".section");
-    links.forEach(link=>{
-      link.addEventListener("click",()=>{
-        sections.forEach(s=>s.classList.remove("active"));
-        document.getElementById(link.dataset.section).classList.add("active");
-      });
-    });
+spinBtn.addEventListener('click',()=>{
+  if(isSpinning) return;
+  isSpinning=true;
+  claimBtn.classList.add('hidden');
+  spinBtn.disabled=true;
 
-    // البحث
-    const search=document.getElementById("searchInput");
-    search.addEventListener("input",()=>{
-      const q=search.value.toLowerCase();
-      sections.forEach(sec=>{
-        sec.querySelectorAll("article").forEach(a=>{
-          a.style.display=a.innerText.toLowerCase().includes(q)?"block":"none";
-        });
-      });
-    });
+  const selected = pickIndexByProbability();
+  const anglePer = 360/slices;
+  const stopAngle = 360 - (selected*anglePer + anglePer/2);
+  const rotations = 9+Math.floor(Math.random()*3);
+  const finalAngle = rotations*360 + stopAngle;
 
-    // قراءة المزيد
-    function toggleArticle(){
-      const x=document.getElementById("fullArticle");
-      const show=(x.style.display!=="block");
-      x.style.display=show?"block":"none";
-      if(show) x.scrollIntoView({behavior:'smooth',block:'center'});
+  let vibrationInterval;
+  if(navigator.vibrate){
+    vibrationInterval=setInterval(()=>navigator.vibrate(100),200);
+  }
+
+  wheelElem.style.transition="transform 5s cubic-bezier(.18,.9,.12,1)";
+  wheelElem.style.transform = degToCss(finalAngle);
+
+  const onEnd = ()=>{
+    wheelElem.style.transition="none";
+    const normalized = finalAngle%360;
+    wheelElem.style.transform=degToCss(normalized);
+
+    if(navigator.vibrate){clearInterval(vibrationInterval); navigator.vibrate(0);}
+
+    isSpinning=false;
+    spinBtn.disabled=false;
+
+    if(bigIndices.includes(selected)){
+      addPoints(BIG_REWARD);
+      showConfetti();
+      showToast("🎉 فزت 100 💎!");
+    }else{
+      claimBtn.classList.remove('hidden');
+      claimBtn.dataset.reward=SMALL_REWARD;
+      showConfetti();
+      showToast("اضغط احصد نقاطك لمشاهدة الإعلان والحصول على 10 💎");
     }
+    wheelElem.removeEventListener('transitionend',onEnd);
+  };
+  wheelElem.addEventListener('transitionend',onEnd);
+});
 
-    // تغيير اللغة
-    let currentLang="ar";
-    const langToggle=document.getElementById("langToggle");
-    langToggle.addEventListener("click",()=>{
-      if(currentLang==="ar"){
-        document.documentElement.lang="fr";
-        document.documentElement.dir="ltr";
-        document.getElementById("title").textContent="rayan ☣️ web";
-        document.getElementById("nav-home").textContent="Accueil";
-        document.getElementById("nav-articles").textContent="Articles";
-        document.getElementById("nav-apps").textContent="Applications";
-        document.getElementById("nav-games").textContent="Jeux";
-        document.getElementById("apps-title").textContent="📱 Meilleures applications";
-        document.getElementById("articles-title").textContent="📰 Articles";
-        document.getElementById("games-title").textContent="🎮 Meilleurs jeux";
-        document.getElementById("top-apps").textContent="📱 Top 5 des applications gratuites";
-        document.getElementById("top-games").textContent="🎮 Top 5 des jeux Android";
-        document.getElementById("pray-article").textContent="🕌 Comment aimer la prière et ressentir de la culpabilité en la retardant ?";
-        document.getElementById("readmore-btn").textContent="📖 Lire plus";
-        currentLang="fr";
-      } else {
-        document.documentElement.lang="ar";
-        document.documentElement.dir="rtl";
-        document.getElementById("title").textContent="rayan ☣️ web";
-        document.getElementById("nav-home").textContent="الرئيسية";
-        document.getElementById("nav-articles").textContent="مقالات";
-        document.getElementById("nav-apps").textContent="تطبيقات";
-        document.getElementById("nav-games").textContent="ألعاب";
-        document.getElementById("apps-title").textContent="📱 أفضل التطبيقات";
-        document.getElementById("articles-title").textContent="📰 مقالات";
-        document.getElementById("games-title").textContent="🎮 أفضل الألعاب";
-        document.getElementById("top-apps").textContent="📱 أفضل 5 تطبيقات مجانية";
-        document.getElementById("top-games").textContent="🎮 أفضل 5 ألعاب أندرويد";
-        document.getElementById("pray-article").textContent="🕌 كيف أحب الصلاة وأشعر بالذنب عند تأخيرها؟";
-        document.getElementById("readmore-btn").textContent="📖 قراءة المزيد";
-        currentLang="ar";
-      }
-    });
-  </script>
+// Points
+function addPoints(n){ points=Number(points)+Number(n); updatePointsUI(); }
+
+// Toast
+function showToast(msg,duration=1800){ toastBox.textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),duration); }
+
+// Error popup
+function showErrorPopup(){ errorPopup.classList.add('show'); }
+function hideErrorPopup(){ errorPopup.classList.remove('show'); }
+
+// Claim button opens blog
+claimBtn.addEventListener('click',()=>{
+  claimBtn.classList.add('hidden');
+  const reward=Number(claimBtn.dataset.reward||SMALL_REWARD);
+  const a=document.createElement('a');
+  a.href=BLOG_LINK;
+  a.target='_blank';
+  a.rel='noopener noreferrer';
+  a.click();
+  const start=Date.now();
+  localStorage.setItem('adStart',String(start));
+  localStorage.setItem('adReward',String(reward));
+});
+
+// Handle ad return
+function handleAdReturn(){
+  const adStart = Number(localStorage.getItem('adStart')||0);
+  const reward = Number(localStorage.getItem('adReward')||0);
+  if(!adStart||!reward) return;
+  const elapsed = Date.now()-adStart;
+  localStorage.removeItem('adStart');
+  localStorage.removeItem('adReward');
+  if(elapsed>=MIN_WATCH_MS){
+    addPoints(reward);
+    showToast(`🎉 تمت إضافة ${reward} 💎 بنجاح!`);
+    claimBtn.classList.add('hidden');
+  }else showErrorPopup();
+}
+window.addEventListener('load',()=>{if(localStorage.getItem('adStart')) setTimeout(handleAdReturn,400);});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){if(localStorage.getItem('adStart')) setTimeout(handleAdReturn,300);}});
+
+// Retry ad
+retryAdBtn.addEventListener('click',()=>{hideErrorPopup(); const a=document.createElement('a'); a.href=BLOG_LINK; a.target='_blank'; a.rel='noopener noreferrer'; a.click();});
+closeErrBtn.addEventListener('click',hideErrorPopup);
+
+// Confetti effect
+function showConfetti(){
+  const confetti = document.createElement('div');
+  confetti.className='confetti';
+  document.body.appendChild(confetti);
+  confetti.style.left=Math.random()*window.innerWidth+'px';
+  confetti.style.top='0px';
+  confetti.style.width='8px';
+  confetti.style.height='8px';
+  confetti.style.background=['#ffd54f','#ff8a65','#ff6b6b','#4caf50','#2196f3'][Math.floor(Math.random()*5)];
+  confetti.style.position='fixed';
+  confetti.style.borderRadius='50%';
+  confetti.style.opacity='1';
+  let fall=0;
+  const interval=setInterval(()=>{
+    fall+=4;
+    confetti.style.top=fall+'px';
+    if(fall>window.innerHeight){clearInterval(interval); confetti.remove();}
+  },16);
+}
+
+// Withdraw button
+withdrawBtnGame.addEventListener('click',()=>{withdrawPopup.classList.add('show');});
+confirmWithdrawBtn.addEventListener('click',()=>{window.open('https://www.tiktok.com/@rayan.website?_t=ZS-90HwlEMhpTu&_r=1','_blank'); withdrawPopup.classList.remove('show');});
+</script>
 </body>
 </html>
